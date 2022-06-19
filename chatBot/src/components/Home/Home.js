@@ -10,6 +10,7 @@ import { IoSendSharp } from "react-icons/io5";
 
 import { FadingBalls } from "react-cssfx-loading";
 import { account } from "../../constant";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [chatValue, setChatValue] = useState("");
@@ -31,16 +32,16 @@ const Home = () => {
       const formDataMessage = {
         messageUser: chatValue,
         messageBot: isDataMessage.messageBot,
+        menus: isDataMessage.menus,
         url_img: isDataMessage?.url_img,
       };
-
       setDataMessage((prev) => [...prev, formDataMessage]);
       setChatValue("");
       inputRef.current.focus();
     } else {
       const formDataMessage = {
         messageUser: chatValue,
-        messageBot: "Tôi không hiểu điều bạn đang muốn nói ? Bạn có thể ...",
+        messageBot: "Xin lỗi, tôi chưa hiểu, bạn có thể nói lại được không ?",
       };
 
       setDataMessage((prev) => [...prev, formDataMessage]);
@@ -97,10 +98,26 @@ const Home = () => {
                         <img src={iconBot} alt="" />
                         <span>{message.messageBot}</span>
                       </div>
-                      {console.log(message)}
+
+                      <div className={styles.wrapperMenu}>
+                        {message.menus
+                          ? message.menus.map((item, index) => (
+                              <span className={styles.itemMenu} key={index}>
+                                {item}
+                              </span>
+                            ))
+                          : ""}
+                      </div>
+
                       {message.url_img ? (
                         <div className={styles.bottomImage}>
-                          <img src={message.url_img} alt="/" />
+                          {message.url_img.map((item, index) => (
+                            <span className={styles.itemImg} key={index}>
+                              <a href="https://www.facebook.com/tuanquoc1502/">
+                                <img src={item} alt="" />
+                              </a>
+                            </span>
+                          ))}
                         </div>
                       ) : (
                         ""

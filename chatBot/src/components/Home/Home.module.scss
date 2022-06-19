@@ -80,6 +80,30 @@
     max-height: 516px;
     overflow-y: auto;
 
+    li {
+        text-decoration: none;
+        list-style: none;
+
+        .wrapperMenu {
+           display: flex;
+           margin-left: 37px;
+           margin-top: 10px;
+           .itemMenu {
+            font-size: 14.5px;
+            margin-right: 15px;
+            background: rgb(75, 73, 73);
+            color: white;
+            border-radius: 4px;
+            padding: 0 10px;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.8;
+            }
+           }
+        }
+    }
+
     .messageUser { 
        line-height: 30px;
        padding: 6px 3.5px;
@@ -133,9 +157,16 @@
         .bottomImage {
             margin-left: 35px;
             margin-top: 10px;
+            .itemImg {
+                margin-right: 10px;
+            }
+            
             img {
+                border: 1px solid #333;
+                border-radius: 6px;
                 width: 100px;
                 height: 100px;
+                cursor: pointer;
             }
         }
     }

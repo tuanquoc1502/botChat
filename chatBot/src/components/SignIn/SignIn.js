@@ -27,17 +27,17 @@ const SignIn = () => {
     data.map((user) => {
       if (user.account !== account || user.password !== password) {
         setIsError(true);
-        return;
+        return "";
       }
 
       if (user.account === account && user.password === password) {
+        setIsError(false);
         const dataInput = {
           account,
           password,
           user_name: user.user_name,
         };
         localStorage.setItem("account", JSON.stringify(dataInput));
-        setIsError(false);
         setIsSignUp(true);
 
         const timer = setTimeout(() => {
